@@ -1,100 +1,3 @@
-// //import 'dart:ffi';
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_warnet/Class.dart';
-// import 'package:flutter_warnet/ResultPage.dart';
-
-// class InputPage extends StatefulWidget {
-//   @override
-//   State<InputPage> createState() => InputPageState();
-// }
-
-// class InputPageState extends State<InputPage> {
-//   TextEditingController namaController = TextEditingController();
-//   TextEditingController kodeController = TextEditingController();
-//   TextEditingController jenisController = TextEditingController();
-//   TextEditingController tglMasukController = TextEditingController();
-//   TextEditingController jamMasukController = TextEditingController();
-//   TextEditingController jamKeluarController = TextEditingController();
-
-//   void submitData() {
-//     String nama = namaController.text;
-//     String kode = kodeController.text;
-//     String jenis = jenisController.text;
-//     String tglMasuk = tglMasukController.text;
-//     double jamMasuk = double.tryParse(jamMasukController.text) ?? 0.0;
-//     double jamKeluar = double.tryParse(jamKeluarController.text) ?? 0.0;
-
-//     if (jamKeluar > jamMasuk) {
-//       Pelanggan pelanggan = Pelanggan(
-//         kodePelanggan: kode,
-//         namaPelanggan: nama,
-//         jenisPelanggan: jenis,
-//       );
-//       Warnet warnet = Warnet(
-//           pelanggan: pelanggan,
-//           tglMasuk: tglMasuk,
-//           jamMasuk: jamMasuk,
-//           jamKeluar: jamKeluar);
-
-//       Navigator.of(context).push(
-//         MaterialPageRoute(builder: (context) => ResultPage(warnet: warnet)),
-//       );
-//     } else {
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         SnackBar(content: Text('Jam Keluar Harus lebih besar dari Jam Masuk')),
-//       );
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(
-//           title: Text('Input Data Warnet'),
-//         ),
-//         body: Padding(
-//           padding: EdgeInsets.all(16.0),
-//           child: Column(
-//             children: [
-//               TextField(
-//                 controller: kodeController,
-//                 decoration: InputDecoration(labelText: 'Kode Pelanggan'),
-//               ),
-//               TextField(
-//                 controller: namaController,
-//                 decoration: InputDecoration(labelText: 'Nama Pelanggan'),
-//               ),
-//               TextField(
-//                 controller: jenisController,
-//                 decoration: InputDecoration(
-//                     labelText: 'Jenis Pelanggan (VIP/GOLD/REGULAR)'),
-//               ),
-//               TextField(
-//                 controller: tglMasukController,
-//                 decoration: InputDecoration(labelText: 'Tanggal Masuk'),
-//               ),
-//               TextField(
-//                 controller: jamMasukController,
-//                 keyboardType: TextInputType.number,
-//                 decoration: InputDecoration(labelText: 'Jam Masuk'),
-//               ),
-//               TextField(
-//                 controller: jamKeluarController,
-//                 keyboardType: TextInputType.number,
-//                 decoration: InputDecoration(labelText: 'JamKeluar'),
-//               ),
-//               SizedBox(height: 20),
-//               ElevatedButton(
-//                 onPressed: submitData,
-//                 child: Text('Hitung Total Bayar'),
-//               ),
-//             ],
-//           ),
-//         ));
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_warnet/Class.dart';
 import 'package:flutter_warnet/ResultPage.dart';
@@ -182,12 +85,14 @@ class InputPageState extends State<InputPage> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(), labelText: 'Kode Pelanggan'),
             ),
+            SizedBox(height: 20),
             // Input Nama Pelanggan
             TextField(
               controller: namaController,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), labelText: 'Nama Pelanggan'),
             ),
+            SizedBox(height: 20),
             // Dropdown untuk Jenis Pelanggan
             DropdownButtonFormField<String>(
               value: selectedJenisPelanggan,
@@ -205,6 +110,7 @@ class InputPageState extends State<InputPage> {
                 });
               },
             ),
+            SizedBox(height: 20),
             // DatePicker untuk Tanggal Masuk
             Row(
               children: [
@@ -222,6 +128,7 @@ class InputPageState extends State<InputPage> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             // Input Jam Masuk
             TextField(
               controller: jamMasukController,
@@ -229,6 +136,7 @@ class InputPageState extends State<InputPage> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(), labelText: 'Jam Masuk'),
             ),
+            SizedBox(height: 20),
             // Input Jam Keluar
             TextField(
               controller: jamKeluarController,
